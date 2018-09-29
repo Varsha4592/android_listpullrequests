@@ -25,7 +25,7 @@ public class SplitDiffActivity extends AppCompatActivity {
     private OkHttpClient client;
     ProgressBar progressBar;
     TextView bodyText;
-
+    /*Dynamic array adapter to view data*/
     private ArrayList<TextView> generateColorHighlightsDisplay(ArrayList<String> lines){
         ArrayList<TextView> rendered = new ArrayList<TextView>();
         int count = 1;
@@ -52,7 +52,7 @@ public class SplitDiffActivity extends AppCompatActivity {
         rendered.get(0).setPadding(5,5,5,5);
         return rendered;
     }
-
+    /*Retrieve Data*/
     private class GitHubSplitDifProcessingTask extends AsyncTask {
         @Override
         protected Object doInBackground(Object[] objects) {
@@ -66,7 +66,7 @@ public class SplitDiffActivity extends AppCompatActivity {
             }
             return null;
         }
-
+        /*Data split view*/
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);

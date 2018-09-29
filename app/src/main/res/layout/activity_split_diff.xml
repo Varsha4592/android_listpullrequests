@@ -35,9 +35,6 @@
                 android:id="@+id/diff_progress"
                 android:visibility="invisible"
                 android:layout_gravity="center"/>
-
-
         </LinearLayout>
-
     </ScrollView>
 </LinearLayout>

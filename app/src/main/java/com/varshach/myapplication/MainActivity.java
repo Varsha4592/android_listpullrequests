@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             this.projectPullURL = projectPullURL;
         }
     }
-
+    /*Checking Connectivity*/
     private boolean haveNetworkConnection() {
         boolean haveConnectedWifi = false;
         boolean haveConnectedMobile = false;
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return haveConnectedWifi || haveConnectedMobile;
     }
-
+    /*Dynamic Array Adapter*/
     public class ProjectListAdapter extends ArrayAdapter {
         private LayoutInflater inflater;
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private final OkHttpClient client = new OkHttpClient();
-
+    /*Retrieve Data*/
     private class GitHubSearchTask extends AsyncTask {
         @Override
         protected Object doInBackground(Object[] objects) {
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
-
+        /*Result Data*/
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
@@ -159,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startSearchResultActivity(new JSONArray());
                 queryText = queryEntry.getText().toString();
                 if(queryText != "" && haveNetworkConnection()) {
                     projectListView.setVisibility(View.INVISIBLE);
@@ -182,14 +181,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         this.projectlist = new ArrayList<ProjectInfo>();
-//        for(int i = 0; i < 10;i++) {
-//            projectlist.add(new ProjectInfo("tensorflow/tensorflow", "Tensorflow","https://api.github.com/repos/tensorflow/tensorflow/pulls"));
-//        }
         this.projectListAdapter = new ProjectListAdapter(getApplicationContext(),R.layout.project_result_item,projectlist);
         projectListView.setAdapter(projectListAdapter);
-//      android.support.v7.widget.SearchView searchView = findViewById(R.id.search_widget);
     }
-
+    /* Intent method
+     * To display result on the next layout and data to be displayed
+     * */
     protected void startProjectPullsViewActivity(ProjectInfo projectInfo){
         Bundle projectDetails = new Bundle();
         projectDetails.putString("title",projectInfo.projectTitle);

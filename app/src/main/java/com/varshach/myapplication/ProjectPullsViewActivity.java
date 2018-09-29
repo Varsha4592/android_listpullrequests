@@ -56,12 +56,10 @@ public class ProjectPullsViewActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             View view = inflater.inflate(R.layout.pulls_info_list_item,null);
             TextView title = view.findViewById(R.id.title);
-//            TextView requestNo = view.findViewById(R.id.pull_request_no);
             TextView userLogin = view.findViewById(R.id.user_login);
             TextView timeCreated = view.findViewById(R.id.time);
             final PullsInfo pullsInfo = (PullsInfo)getItem(position);
             title.setText(pullsInfo.title);
-//            requestNo.setText("#"+pullsInfo.requestNo);
             userLogin.setText(pullsInfo.userLogin);
             timeCreated.setText(pullsInfo.timeCreated);
             view.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +75,7 @@ public class ProjectPullsViewActivity extends AppCompatActivity {
             return view;
         }
     }
-
+    /*Retrieve Data*/
     private class GitHubPullsDataRetrieveTask extends AsyncTask {
         @Override
         protected Object doInBackground(Object[] objects) {
@@ -91,7 +89,7 @@ public class ProjectPullsViewActivity extends AppCompatActivity {
             }
             return null;
         }
-
+        /*Parsing data to get as Json object*/
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
@@ -126,9 +124,7 @@ public class ProjectPullsViewActivity extends AppCompatActivity {
         client = new OkHttpClient();
         GitHubPullsDataRetrieveTask gitHubPullsDataRetrieveTask = new GitHubPullsDataRetrieveTask();
         pullsInfoList = new ArrayList<>();
-        //pullsInfoList.add(new PullsInfo("kjfskjbfkjbkjen","sjb.knfkajnslkjfkdkbkfsjbdbfljblsdajbj","https://api.github.com/repos/shady/limevine/pulls","slimyK","27-09-2016","#153642"));
         pullsInfoListView = findViewById(R.id.pulls_view);
-
         progressBar = findViewById(R.id.second_progress);
         progressBar.setVisibility(View.VISIBLE);
         pullsViewAdapter = new PullsInfoListAdapter(this,R.layout.pulls_info_list_item,pullsInfoList);
@@ -141,7 +137,9 @@ public class ProjectPullsViewActivity extends AppCompatActivity {
         gitHubPullsDataRetrieveTask.execute(pullsUrl);
 
     }
-
+    /* Intent method
+     * To display result on the next layout and data to be displayed
+     * */
     public void startDiffActivity(PullsInfo pullsInfo){
         Bundle bundle = new Bundle();
         bundle.putCharSequence("diffUrl",pullsInfo.diffURL);
