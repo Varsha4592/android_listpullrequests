@@ -2,7 +2,7 @@
 *An example on how to search for a GitHub repository, select a project to view all pulls related to that project and view files changed with in that pull request.*
 
 demo video
-[![Alt text](https://img.youtu.be/NysQWl7ZZho)](https://youtu.be/NysQWl7ZZho)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/NysQWl7ZZho/1.jpg)](https://www.youtube.com/watch?v=NysQWl7ZZho)
 
 
 
